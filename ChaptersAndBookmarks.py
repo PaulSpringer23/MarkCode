@@ -24,8 +24,11 @@ def group_bookmarks(bookmarks, chapters):
 # c = [5, 10, 15, 20]
 
 
-b = [1]
-c = range(1, 100000)
+# b = [1]
+# c = range(1, 100000)
+
+b = [274]
+c = range(1, 100000, 50)
 
 result = group_bookmarks(b, c)
 print(result)
