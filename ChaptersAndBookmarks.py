@@ -1,11 +1,10 @@
 def group_bookmarks(bookmarks, chapters):
-    bookmark_index = len(bookmarks) - 1
-    chapters_index = len(chapters) - 1
+    chapters_index = -1
 
     chapter_buckets = {}
 
-    while bookmark_index >= 0:
-        # We know that bookmark[0] will never be earlier than chapters[0],
+    for bookmark_index in range(len(bookmarks) - 1, -1, -1) :
+        # We know that bookmarks[0] will never be earlier than chapters[0],
         # so we don't need to do any checking for that here.
         while bookmarks[bookmark_index] < chapters[chapters_index]:
             chapters_index -= 1
@@ -14,7 +13,6 @@ def group_bookmarks(bookmarks, chapters):
             chapter_buckets[chapters[chapters_index]] = []
 
         chapter_buckets[chapters[chapters_index]].append(bookmarks[bookmark_index])
-        bookmark_index -= 1
 
     return chapter_buckets
 
@@ -27,8 +25,8 @@ def group_bookmarks(bookmarks, chapters):
 # b = [1]
 # c = range(1, 100000)
 
-b = [274]
-c = range(1, 100000, 50)
+b = [274, 19928]
+c = range(1, 100000, 43)
 
 result = group_bookmarks(b, c)
 print(result)
